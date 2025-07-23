@@ -1,4 +1,4 @@
-name: Demo CI/CD
+name: Demo CI/CD Visual
 
 on:
   push:
@@ -6,17 +6,39 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Descargar el repositorio
+      - name: Clonar repositorio
         uses: actions/checkout@v3
 
-      - name: Simular validación de código
-        run: echo "✅ Código validado correctamente"
+      - name: 🔧 Instalación de dependencias
+        run: |
+          echo "Simulando instalación de dependencias..."
+          sleep 2
 
-      - name: Simular pruebas automáticas
-        run: echo "🧪 Pruebas ejecutadas con éxito"
+      - name: 🏗 Proceso de construcción (build)
+        run: |
+          mkdir dist
+          echo "<html><body><h1>Build generado por el pipeline</h1></body></html>" > dist/index.html
+          echo "✅ Build generado en carpeta /dist"
 
-      - name: Simular despliegue a QA
-        run: echo "🚀 Despliegue automático a QA realizado"
+      - name: 🧪 Ejecución de pruebas automáticas
+        run: |
+          echo "Iniciando pruebas..."
+          echo "✔️ Prueba 1: PASÓ"
+          echo "✔️ Prueba 2: PASÓ"
+          echo "✔️ Prueba 3: PASÓ"
+
+      - name: 🚀 Despliegue simulado
+        run: |
+          echo "Copiando archivos de /dist al servidor ficticio..."
+          sleep 1
+          echo "🎉 Despliegue exitoso"
+
+      - name: Publicar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-demo
+          path: dist/index.html
