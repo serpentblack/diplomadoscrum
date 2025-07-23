@@ -1,0 +1,22 @@
+name: Demo CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Simular validación de código
+        run: echo "✅ Código validado correctamente"
+
+      - name: Simular pruebas automáticas
+        run: echo "🧪 Pruebas ejecutadas con éxito"
+
+      - name: Simular despliegue a QA
+        run: echo "🚀 Despliegue automático a QA realizado"
