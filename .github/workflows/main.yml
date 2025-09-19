@@ -1,6 +1,7 @@
 name: Demo CI/CD Visual
 
 on:
+  workflow_dispatch:      # <- botón "Run workflow"
   push:
     branches:
       - main
